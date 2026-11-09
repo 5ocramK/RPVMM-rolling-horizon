@@ -1,0 +1,668 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [6 0 R 8 0 R 10 0 R 12 0 R 14 0 R] /Count 5 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+5 0 obj
+<< /Length 7043 >>
+stream
+q 0.050 0.350 0.220 rg 0.00 813.89 595.28 28.00 re f Q
+q BT /F2 9.50 Tf 1.000 1.000 1.000 rg 38.00 823.89 Td (UNIFESP - RPVMM | Caso Suzano S&OP Logístico \(Modelo Rolling Horizon em Julia\)) Tj ET Q
+q 0.750 0.780 0.820 RG 0.60 w 38.00 30.00 m 557.28 30.00 l S Q
+q BT /F1 8.00 Tf 0.400 0.400 0.400 rg 38.00 18.00 Td (Guia de Apresentação, Resumo do Código e Tabelas de Resultados) Tj ET Q
+q BT /F1 8.00 Tf 0.400 0.400 0.400 rg 512.28 18.00 Td (Página 1) Tj ET Q
+q 0.070 0.220 0.360 rg 38.00 753.89 519.28 44.00 re f Q
+q BT /F2 13.50 Tf 1.000 1.000 1.000 rg 50.00 778.89 Td (Roteiro de Apresentação e Resultados - Caso Suzano S&OP) Tj ET Q
+q BT /F1 9.20 Tf 0.850 0.920 0.980 rg 50.00 762.89 Td (Decomposição Mensal em Janela Deslizante \(Rolling Horizon MILP\) em Julia + JuMP + HiGHS) Tj ET Q
+q 0.880 0.940 0.900 rg 38.00 722.89 519.28 19.00 re f Q
+q 0.050 0.400 0.230 rg 38.00 722.89 4.00 19.00 re f Q
+q BT /F2 10.50 Tf 0.050 0.300 0.180 rg 48.00 728.39 Td (PARTE 1: ESTRUTURA SUGERIDA DE SLIDES \(10 SLIDES\)) Tj ET Q
+q 0.980 0.990 1.000 rg 0.780 0.830 0.880 RG 0.60 w 38.00 591.49 519.28 125.40 re B Q
+q 0.120 0.280 0.450 rg 38.00 699.89 519.28 17.00 re f Q
+q BT /F2 9.40 Tf 1.000 1.000 1.000 rg 46.00 704.89 Td (Slide 1 - Título e Contexto do Problema \(S&OP Suzano\)) Tj ET Q
+q BT /F1 8.50 Tf 0.120 0.150 0.180 rg 47.00 688.89 Td (• Objetivo: Apoiar o time de Sales & Operations Planning \(S&OP\) no orçamento logístico anual) Tj ET Q
+q BT /F1 8.50 Tf 0.120 0.150 0.180 rg 47.00 677.09 Td (   \(horizonte de 12 meses\).) Tj ET Q
+q BT /F1 8.50 Tf 0.120 0.150 0.180 rg 47.00 663.29 Td (• Escopo da cadeia: 9 Fábricas no Brasil -> 3 Portos de Carregamento \(POLs: Santos, Portocel e) Tj ET Q
+q BT /F1 8.50 Tf 0.120 0.150 0.180 rg 47.00 651.49 Td (   Itaqui\) -> 7 Armadores / Rotas Marítimas -> 169 Portos de Descarga \(PODs\) -> 440 Clientes) Tj ET Q
+q BT /F1 8.50 Tf 0.120 0.150 0.180 rg 47.00 639.69 Td (   Internacionais \(123 produtos ativos\).) Tj ET Q
+q BT /F1 8.50 Tf 0.120 0.150 0.180 rg 47.00 625.89 Td (• Perguntas-chave: \(1\) Quanto produzir por fábrica/produto? \(2\) Quanto embarcar por rota e) Tj ET Q
+q BT /F1 8.50 Tf 0.120 0.150 0.180 rg 47.00 614.09 Td (   quantos navios? \(3\) Quanto manter de estoque em fábricas, POLs e PODs? \(4\) Por qual POD) Tj ET Q
+q BT /F1 8.50 Tf 0.120 0.150 0.180 rg 47.00 602.29 Td (   atender cada cliente?) Tj ET Q
+q 0.980 0.990 1.000 rg 0.780 0.830 0.880 RG 0.60 w 38.00 422.69 519.28 162.80 re B Q
+q 0.120 0.280 0.450 rg 38.00 568.49 519.28 17.00 re f Q
+q BT /F2 9.40 Tf 1.000 1.000 1.000 rg 46.00 573.49 Td (Slide 2 - Desafios Operacionais e Regras de Negócio) Tj ET Q
+q BT /F1 8.50 Tf 0.120 0.150 0.180 rg 47.00 557.49 Td (• Produção sem ociosidade: 100% da capacidade líquida mensal de cada fábrica deve ser) Tj ET Q
+q BT /F1 8.50 Tf 0.120 0.150 0.180 rg 47.00 545.69 Td (   utilizada, respeitando as linhas habilitadas \(V1 a V16\) e limites de expedição) Tj ET Q
+q BT /F1 8.50 Tf 0.120 0.150 0.180 rg 47.00 533.89 Td (   \(MAX_CARREGAMENTO\) e armazenagem \(MAX_ESTOQUE\).) Tj ET Q
+q BT /F1 8.50 Tf 0.120 0.150 0.180 rg 47.00 520.09 Td (• Frete morto inadmissível: Carga de cada navio deve respeitar o intervalo contratual) Tj ET Q
+q BT /F1 8.50 Tf 0.120 0.150 0.180 rg 47.00 508.29 Td (   [MIN_INTAKE, MAX_INTAKE].) Tj ET Q
+q BT /F1 8.50 Tf 0.120 0.150 0.180 rg 47.00 494.49 Td (• Restrição física de Calado \(DWT\): Portocel suporta até 52.000 t \(exigindo navios menores ou) Tj ET Q
+q BT /F1 8.50 Tf 0.120 0.150 0.180 rg 47.00 482.69 Td (   rotas multi-POL como Portocel;Itaqui e Portocel;Santos para completar carga\), Itaqui 70.000) Tj ET Q
+q BT /F1 8.50 Tf 0.120 0.150 0.180 rg 47.00 470.89 Td (   t e Santos 1.000.000 t.) Tj ET Q
+q BT /F1 8.50 Tf 0.120 0.150 0.180 rg 47.00 457.09 Td (• Tempos marítimos e Cobertura: Transit time \(TEMPO_IDA de 1 ou 2 meses\), Return time) Tj ET Q
+q BT /F1 8.50 Tf 0.120 0.150 0.180 rg 47.00 445.29 Td (   \(TEMPO_IDA_VOLTA de 2 ou 3 meses\) e política de cobertura de 15 dias de demanda nos PODs) Tj ET Q
+q BT /F1 8.50 Tf 0.120 0.150 0.180 rg 47.00 433.49 Td (   \(soft constraint\).) Tj ET Q
+q 0.980 0.990 1.000 rg 0.780 0.830 0.880 RG 0.60 w 38.00 291.29 519.28 125.40 re B Q
+q 0.120 0.280 0.450 rg 38.00 399.69 519.28 17.00 re f Q
+q BT /F2 9.40 Tf 1.000 1.000 1.000 rg 46.00 404.69 Td (Slide 3 - Estratégia de Solução: Decomposição Mensal \(Rolling Horizon\)) Tj ET Q
+q BT /F1 8.50 Tf 0.120 0.150 0.180 rg 47.00 388.69 Td (• Por que decompor mês a mês? O problema monolítico \(8.082 rotas x 123 produtos x 15 meses\)) Tj ET Q
+q BT /F1 8.50 Tf 0.120 0.150 0.180 rg 47.00 376.89 Td (   ultrapassa 14 milhões de variáveis.) Tj ET Q
+q BT /F1 8.50 Tf 0.120 0.150 0.180 rg 47.00 363.09 Td (• Janela Deslizante \(Rolling Horizon\): Resolvemos sequencialmente do Mês 1 ao Mês 12. No mês) Tj ET Q
+q BT /F1 8.50 Tf 0.120 0.150 0.180 rg 47.00 351.29 Td (   t, o subproblema otimiza a janela [t, t+1, t+2] \(lookahead de 2 meses = maior TEMPO_IDA\),) Tj ET Q
+q BT /F1 8.50 Tf 0.120 0.150 0.180 rg 47.00 339.49 Td (   com navios inteiros no mês t e relaxados no lookahead.) Tj ET Q
+q BT /F1 8.50 Tf 0.120 0.150 0.180 rg 47.00 325.69 Td (• Herança de Estado: Ao fechar o mês t, fixamos as decisões ótimas de t e transferimos para o) Tj ET Q
+q BT /F1 8.50 Tf 0.120 0.150 0.180 rg 47.00 313.89 Td (   mês t+1 os estoques finais \(Fábricas, POLs e PODs\), as cargas em trânsito no mar \(que) Tj ET Q
+q BT /F1 8.50 Tf 0.120 0.150 0.180 rg 47.00 302.09 Td (   atracarão em t+1 e t+2\) e os navios ocupados de cada armador.) Tj ET Q
+q 0.980 0.990 1.000 rg 0.780 0.830 0.880 RG 0.60 w 38.00 148.09 519.28 137.20 re B Q
+q 0.120 0.280 0.450 rg 38.00 268.29 519.28 17.00 re f Q
+q BT /F2 9.40 Tf 1.000 1.000 1.000 rg 46.00 273.29 Td (Slide 4 - Modelagem Matemática, Filtro de Rotas e Solver) Tj ET Q
+q BT /F1 8.50 Tf 0.120 0.150 0.180 rg 47.00 257.29 Td (• Desacoplamento Rota-Produto: Como frete, intake e calado dependem apenas da tonelagem total) Tj ET Q
+q BT /F1 8.50 Tf 0.120 0.150 0.180 rg 47.00 245.49 Td (   no navio, desacoplamos o fluxo físico das rotas Y\(r,l,d,t\) do fluxo de produtos) Tj ET Q
+q BT /F1 8.50 Tf 0.120 0.150 0.180 rg 47.00 233.69 Td (   f\(l,d,tau,p,t\), reduzindo o modelo em 100x sem perda de exatidão.) Tj ET Q
+q BT /F1 8.50 Tf 0.120 0.150 0.180 rg 47.00 219.89 Td (• Pré-seleção de Rotas: Das 8.082 rotas cadastradas, 6.368 são viáveis no calado sequencial) Tj ET Q
+q BT /F1 8.50 Tf 0.120 0.150 0.180 rg 47.00 208.09 Td (   \(DWT\). Destas, selecionamos as 1.020 melhores rotas \(todas as rotas diretas + top 3 mais) Tj ET Q
+q BT /F1 8.50 Tf 0.120 0.150 0.180 rg 47.00 196.29 Td (   econômicas por grupo composto\).) Tj ET Q
+q BT /F1 8.50 Tf 0.120 0.150 0.180 rg 47.00 182.49 Td (• Tecnologia: Implementado em Julia com JuMP e solver open-source HiGHS, incluindo mecanismo) Tj ET Q
+q BT /F1 8.50 Tf 0.120 0.150 0.180 rg 47.00 170.69 Td (   de contingência em 3 níveis \(MILP padrão -> Retentativa com heurísticas primais -> Relaxação) Tj ET Q
+q BT /F1 8.50 Tf 0.120 0.150 0.180 rg 47.00 158.89 Td (   com arredondamento\).) Tj ET Q
+endstream
+endobj
+6 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 5 0 R >>
+endobj
+7 0 obj
+<< /Length 7893 >>
+stream
+q 0.050 0.350 0.220 rg 0.00 813.89 595.28 28.00 re f Q
+q BT /F2 9.50 Tf 1.000 1.000 1.000 rg 38.00 823.89 Td (UNIFESP - RPVMM | Caso Suzano S&OP Logístico \(Modelo Rolling Horizon em Julia\)) Tj ET Q
+q 0.750 0.780 0.820 RG 0.60 w 38.00 30.00 m 557.28 30.00 l S Q
+q BT /F1 8.00 Tf 0.400 0.400 0.400 rg 38.00 18.00 Td (Guia de Apresentação, Resumo do Código e Tabelas de Resultados) Tj ET Q
+q BT /F1 8.00 Tf 0.400 0.400 0.400 rg 512.28 18.00 Td (Página 2) Tj ET Q
+q 0.980 0.990 1.000 rg 0.780 0.830 0.880 RG 0.60 w 38.00 668.49 519.28 129.40 re B Q
+q 0.120 0.280 0.450 rg 38.00 780.89 519.28 17.00 re f Q
+q BT /F2 9.40 Tf 1.000 1.000 1.000 rg 46.00 785.89 Td (Slide 5 - Resultados Globais \(Orçamento Consolidado de 12 Meses\)) Tj ET Q
+q BT /F1 8.50 Tf 0.120 0.150 0.180 rg 47.00 769.89 Td (• Demanda Total \(12 meses\): 12.156.937 ton | Volume Atendido: 9.609.001 ton \(79,04% no ano;) Tj ET Q
+q BT /F1 8.50 Tf 0.120 0.150 0.180 rg 47.00 758.09 Td (   85% a 92% após o ramp-up inicial\).) Tj ET Q
+q BT /F1 8.50 Tf 0.120 0.150 0.180 rg 47.00 744.29 Td (• Receita Bruta Total: USD 5,292 bilhões \(5.292.286.391 USD\).) Tj ET Q
+q BT /F1 8.50 Tf 0.120 0.150 0.180 rg 47.00 730.49 Td (• Custo de Frete Marítimo: USD 247,92 milhões \(frete médio efetivo de 23,50 USD/ton com) Tj ET Q
+q BT /F1 8.50 Tf 0.120 0.150 0.180 rg 47.00 718.69 Td (   desconto escalonado\).) Tj ET Q
+q BT /F1 8.50 Tf 0.120 0.150 0.180 rg 47.00 704.89 Td (• Custo In-land \(Last Mile\): USD 8,74 milhões \(custo médio de 0,91 USD/ton entregue\).) Tj ET Q
+q BT /F1 8.50 Tf 0.120 0.150 0.180 rg 47.00 691.09 Td (• Margem Operacional Total: USD 5,036 bilhões \(5.035.623.821 USD - margem de 95,15% sobre a) Tj ET Q
+q BT /F1 8.50 Tf 0.120 0.150 0.180 rg 47.00 679.29 Td (   receita bruta\).) Tj ET Q
+q 0.980 0.990 1.000 rg 0.780 0.830 0.880 RG 0.60 w 38.00 562.69 519.28 99.80 re B Q
+q 0.120 0.280 0.450 rg 38.00 645.49 519.28 17.00 re f Q
+q BT /F2 9.40 Tf 1.000 1.000 1.000 rg 46.00 650.49 Td (Slide 6 - Dinâmica Mensal: Efeito do Transit Time e Estabilização) Tj ET Q
+q BT /F1 8.50 Tf 0.120 0.150 0.180 rg 47.00 634.49 Td (• Ramp-up nos Meses 1 e 2 \(19,3% e 44,5% de atendimento\): Como todas as rotas marítimas têm) Tj ET Q
+q BT /F1 8.50 Tf 0.120 0.150 0.180 rg 47.00 622.69 Td (   TEMPO_IDA de 1 ou 2 meses, no Mês 1 os clientes só podem ser atendidos pelo estoque inicial) Tj ET Q
+q BT /F1 8.50 Tf 0.120 0.150 0.180 rg 47.00 610.89 Td (   já existente nos PODs.) Tj ET Q
+q BT /F1 8.50 Tf 0.120 0.150 0.180 rg 47.00 597.09 Td (• Estabilização \(Meses 3 a 12\): A partir do Mês 3, os navios despachados nos Meses 1 e 2) Tj ET Q
+q BT /F1 8.50 Tf 0.120 0.150 0.180 rg 47.00 585.29 Td (   atracam nos PODs e o atendimento estabiliza entre 80% e 92,1%, gerando mais de USD 410M a) Tj ET Q
+q BT /F1 8.50 Tf 0.120 0.150 0.180 rg 47.00 573.49 Td (   USD 524M de margem operacional por mês.) Tj ET Q
+q 0.980 0.990 1.000 rg 0.780 0.830 0.880 RG 0.60 w 38.00 456.89 519.28 99.80 re B Q
+q 0.120 0.280 0.450 rg 38.00 539.69 519.28 17.00 re f Q
+q BT /F2 9.40 Tf 1.000 1.000 1.000 rg 46.00 544.69 Td (Slide 7 - Resposta 1: Produção nas Fábricas e Gargalos de Expedição) Tj ET Q
+q BT /F1 8.50 Tf 0.120 0.150 0.180 rg 47.00 528.69 Td (• 100% da capacidade líquida utilizada nas 9 fábricas todos os meses \(12.196.312 ton) Tj ET Q
+q BT /F1 8.50 Tf 0.120 0.150 0.180 rg 47.00 516.89 Td (   produzidas e 11.349.937 ton enviadas aos POLs\).) Tj ET Q
+q BT /F1 8.50 Tf 0.120 0.150 0.180 rg 47.00 503.09 Td (• Gargalo operacional identificado: Nas fábricas de Três Lagoas \(produção de até 278,5 mil) Tj ET Q
+q BT /F1 8.50 Tf 0.120 0.150 0.180 rg 47.00 491.29 Td (   t/mês vs MAX_CARREGAMENTO de 232,5 mil t/mês\) e Ribas \(produção de até 226,9 mil t/mês vs) Tj ET Q
+q BT /F1 8.50 Tf 0.120 0.150 0.180 rg 47.00 479.49 Td (   MAX_CARREGAMENTO de 218,3 mil t/mês\), o limite de expedição requer estoque pulmão na própria) Tj ET Q
+q BT /F1 8.50 Tf 0.120 0.150 0.180 rg 47.00 467.69 Td (   fábrica.) Tj ET Q
+q 0.980 0.990 1.000 rg 0.780 0.830 0.880 RG 0.60 w 38.00 323.49 519.28 127.40 re B Q
+q 0.120 0.280 0.450 rg 38.00 433.89 519.28 17.00 re f Q
+q BT /F2 9.40 Tf 1.000 1.000 1.000 rg 46.00 438.89 Td (Slide 8 - Resposta 2: Malha Marítima, Rotas Multi-Parada e Armadores) Tj ET Q
+q BT /F1 8.50 Tf 0.120 0.150 0.180 rg 47.00 422.89 Td (• 394 navios despachados no ano transportando 10.552.060 ton \(Santos: 6,02M t | Portocel:) Tj ET Q
+q BT /F1 8.50 Tf 0.120 0.150 0.180 rg 47.00 411.09 Td (   3,36M t | Itaqui: 1,17M t\).) Tj ET Q
+q BT /F1 8.50 Tf 0.120 0.150 0.180 rg 47.00 397.29 Td (• Rotas Multi-POL \(933,2 mil ton | 8,8%\): Navios que carregam em Portocel \(respeitando o) Tj ET Q
+q BT /F1 8.50 Tf 0.120 0.150 0.180 rg 47.00 385.49 Td (   calado de 52 mil t\) e completam carga em Itaqui ou Santos.) Tj ET Q
+q BT /F1 8.50 Tf 0.120 0.150 0.180 rg 47.00 371.69 Td (• Rotas Multi-POD \(3,23 milhões ton | 30,6%\): Navios que descarregam em múltiplos portos no) Tj ET Q
+q BT /F1 8.50 Tf 0.120 0.150 0.180 rg 47.00 359.89 Td (   exterior para respeitar limites de calado e descarga.) Tj ET Q
+q BT /F1 8.50 Tf 0.120 0.150 0.180 rg 47.00 346.09 Td (• Armadores mais acionados: ULISSES \(218 navios | 4,60M t\), COLOMBO \(132 navios | 3,57M t\) e) Tj ET Q
+q BT /F1 8.50 Tf 0.120 0.150 0.180 rg 47.00 334.29 Td (   SINBAD \(39 navios | 2,13M t\).) Tj ET Q
+q 0.980 0.990 1.000 rg 0.780 0.830 0.880 RG 0.60 w 38.00 215.69 519.28 101.80 re B Q
+q 0.120 0.280 0.450 rg 38.00 300.49 519.28 17.00 re f Q
+q BT /F2 9.40 Tf 1.000 1.000 1.000 rg 46.00 305.49 Td (Slide 9 - Respostas 3 e 4: Estoques \(POL/POD\) e Atendimento por POD) Tj ET Q
+q BT /F1 8.50 Tf 0.120 0.150 0.180 rg 47.00 289.49 Td (• Estoques nos POLs: Operação enxuta de passagem \(média mensal de 42,3 mil t em Itaqui, 20,9) Tj ET Q
+q BT /F1 8.50 Tf 0.120 0.150 0.180 rg 47.00 277.69 Td (   mil t em Santos e 16,3 mil t em Portocel\).) Tj ET Q
+q BT /F1 8.50 Tf 0.120 0.150 0.180 rg 47.00 263.89 Td (• Estoques nos PODs: Média mensal de 748,6 mil ton estocadas nos PODs, superando no agregado a) Tj ET Q
+q BT /F1 8.50 Tf 0.120 0.150 0.180 rg 47.00 252.09 Td (   meta de 15 dias de demanda \(400,4 mil ton\).) Tj ET Q
+q BT /F1 8.50 Tf 0.120 0.150 0.180 rg 47.00 238.29 Td (• Principais PODs de atendimento: Alabasta \(887 mil t\), Besaid \(866 mil t\), Deeptrench \(865) Tj ET Q
+q BT /F1 8.50 Tf 0.120 0.150 0.180 rg 47.00 226.49 Td (   mil t\), Azkaban \(652 mil t\) e Johto \(599 mil t\).) Tj ET Q
+q 0.980 0.990 1.000 rg 0.780 0.830 0.880 RG 0.60 w 38.00 96.09 519.28 113.60 re B Q
+q 0.120 0.280 0.450 rg 38.00 192.69 519.28 17.00 re f Q
+q BT /F2 9.40 Tf 1.000 1.000 1.000 rg 46.00 197.69 Td (Slide 10 - Desafios Estratégicos da Liderança \(Seção 2.4\)) Tj ET Q
+q BT /F1 8.50 Tf 0.120 0.150 0.180 rg 47.00 181.69 Td (• Frota com Return Time \(2.4.1\) e Desconto Escalonado \(2.4.2\): Incorporados no modelo,) Tj ET Q
+q BT /F1 8.50 Tf 0.120 0.150 0.180 rg 47.00 169.89 Td (   priorizando navios cheios na faixa de 25% de desconto.) Tj ET Q
+q BT /F1 8.50 Tf 0.120 0.150 0.180 rg 47.00 156.09 Td (• Clientes Deficitários \(2.4.4\): Dos 417 clientes atendidos, ZERO clientes dão prejuízo \(preço) Tj ET Q
+q BT /F1 8.50 Tf 0.120 0.150 0.180 rg 47.00 144.29 Td (   médio ~550 USD/t vs custo logístico ~24,4 USD/t\).) Tj ET Q
+q BT /F1 8.50 Tf 0.120 0.150 0.180 rg 47.00 130.49 Td (• Recomendação de Investimento \(2.4.4\): Antes de construir novas fábricas, expandir a) Tj ET Q
+q BT /F1 8.50 Tf 0.120 0.150 0.180 rg 47.00 118.69 Td (   capacidade de expedição \(MAX_CARREGAMENTO\) de Três Lagoas e Ribas até o Porto de Santos) Tj ET Q
+q BT /F1 8.50 Tf 0.120 0.150 0.180 rg 47.00 106.89 Td (   libera mais de 400 mil ton/ano de celulose já produzida.) Tj ET Q
+q 0.880 0.940 0.900 rg 38.00 69.09 519.28 19.00 re f Q
+q 0.050 0.400 0.230 rg 38.00 69.09 4.00 19.00 re f Q
+q BT /F2 10.50 Tf 0.050 0.300 0.180 rg 48.00 74.59 Td (PARTE 2: RESUMO DO QUE O CÓDIGO EM JULIA FAZ \(modelo_rolling_horizon.jl\)) Tj ET Q
+endstream
+endobj
+8 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 7 0 R >>
+endobj
+9 0 obj
+<< /Length 2278 >>
+stream
+q 0.050 0.350 0.220 rg 0.00 813.89 595.28 28.00 re f Q
+q BT /F2 9.50 Tf 1.000 1.000 1.000 rg 38.00 823.89 Td (UNIFESP - RPVMM | Caso Suzano S&OP Logístico \(Modelo Rolling Horizon em Julia\)) Tj ET Q
+q 0.750 0.780 0.820 RG 0.60 w 38.00 30.00 m 557.28 30.00 l S Q
+q BT /F1 8.00 Tf 0.400 0.400 0.400 rg 38.00 18.00 Td (Guia de Apresentação, Resumo do Código e Tabelas de Resultados) Tj ET Q
+q BT /F1 8.00 Tf 0.400 0.400 0.400 rg 512.28 18.00 Td (Página 3) Tj ET Q
+q BT /F2 9.00 Tf 0.070 0.220 0.360 rg 42.00 787.89 Td (1. Leitura e Filtro Físico \(carregar_dados\):) Tj ET Q
+q BT /F1 8.60 Tf 0.120 0.150 0.180 rg 48.00 774.89 Td (Lê os 9 CSVs da operação, mapeia fábricas->POLs e linhas de produto, valida o calado \(DWT\) de) Tj ET Q
+q BT /F1 8.60 Tf 0.120 0.150 0.180 rg 48.00 762.89 Td (saída e chegada das 8.082 rotas e seleciona as 1.020 melhores rotas candidatas.) Tj ET Q
+q BT /F2 9.00 Tf 0.070 0.220 0.360 rg 42.00 746.89 Td (2. Gestão do Estado Dinâmico \(EstadoSistema\):) Tj ET Q
+q BT /F1 8.60 Tf 0.120 0.150 0.180 rg 48.00 733.89 Td (Armazena ao fim de cada mês t os estoques remanescentes nas Fábricas, POLs e PODs, as cargas em) Tj ET Q
+q BT /F1 8.60 Tf 0.120 0.150 0.180 rg 48.00 721.89 Td (trânsito marítimo \(despachadas em t-1 e t-2 que chegarão em t+1 e t+2\) e os navios ocupados por) Tj ET Q
+q BT /F1 8.60 Tf 0.120 0.150 0.180 rg 48.00 709.89 Td (armador.) Tj ET Q
+q BT /F2 9.00 Tf 0.070 0.220 0.360 rg 42.00 693.89 Td (3. Subproblema Mensal com Lookahead \(resolver_mes!\):) Tj ET Q
+q BT /F1 8.60 Tf 0.120 0.150 0.180 rg 48.00 680.89 Td (Monta e resolve no JuMP/HiGHS a janela [t, t+1, t+2], aplicando todas as restrições de) Tj ET Q
+q BT /F1 8.60 Tf 0.120 0.150 0.180 rg 48.00 668.89 Td (capacidade, calado sequencial parada a parada, frete morto, frota com return time, desconto em) Tj ET Q
+q BT /F1 8.60 Tf 0.120 0.150 0.180 rg 48.00 656.89 Td (3 faixas e cobertura de 15 dias nos PODs.) Tj ET Q
+q BT /F2 9.00 Tf 0.070 0.220 0.360 rg 42.00 640.89 Td (4. Exportação de Relatórios \(salvar_relatorios\):) Tj ET Q
+q BT /F1 8.60 Tf 0.120 0.150 0.180 rg 48.00 627.89 Td (Consolida as decisões fixadas nos 12 meses e exporta automaticamente 7 arquivos CSV detalhados) Tj ET Q
+q BT /F1 8.60 Tf 0.120 0.150 0.180 rg 48.00 615.89 Td (na pasta resultados/.) Tj ET Q
+endstream
+endobj
+10 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 9 0 R >>
+endobj
+11 0 obj
+<< /Length 23426 >>
+stream
+q 0.050 0.350 0.220 rg 0.00 813.89 595.28 28.00 re f Q
+q BT /F2 9.50 Tf 1.000 1.000 1.000 rg 38.00 823.89 Td (UNIFESP - RPVMM | Caso Suzano S&OP Logístico \(Modelo Rolling Horizon em Julia\)) Tj ET Q
+q 0.750 0.780 0.820 RG 0.60 w 38.00 30.00 m 557.28 30.00 l S Q
+q BT /F1 8.00 Tf 0.400 0.400 0.400 rg 38.00 18.00 Td (Guia de Apresentação, Resumo do Código e Tabelas de Resultados) Tj ET Q
+q BT /F1 8.00 Tf 0.400 0.400 0.400 rg 512.28 18.00 Td (Página 4) Tj ET Q
+q 0.880 0.940 0.900 rg 38.00 776.89 519.28 19.00 re f Q
+q 0.050 0.400 0.230 rg 38.00 776.89 4.00 19.00 re f Q
+q BT /F2 10.50 Tf 0.050 0.300 0.180 rg 48.00 782.39 Td (PARTE 3: TABELAS DE RESULTADOS PARA OS SLIDES) Tj ET Q
+q BT /F2 9.60 Tf 0.070 0.220 0.360 rg 38.00 759.89 Td (Tabela 1 - Resumo Mensal Executivo \(6_resumo_mensal.csv\)) Tj ET Q
+q 0.120 0.280 0.450 rg 38.00 739.89 519.00 16.00 re f Q
+q BT /F2 7.80 Tf 1.000 1.000 1.000 rg 45.85 744.39 Td (Mês) Tj ET Q
+q BT /F2 7.80 Tf 1.000 1.000 1.000 rg 79.90 744.39 Td (Demanda \(t\)) Tj ET Q
+q BT /F2 7.80 Tf 1.000 1.000 1.000 rg 138.80 744.39 Td (Atendido \(t\)) Tj ET Q
+q BT /F2 7.80 Tf 1.000 1.000 1.000 rg 201.20 744.39 Td (% Atend.) Tj ET Q
+q BT /F2 7.80 Tf 1.000 1.000 1.000 rg 243.70 744.39 Td (Navios) Tj ET Q
+q BT /F2 7.80 Tf 1.000 1.000 1.000 rg 292.70 744.39 Td (Receita \(USD\)) Tj ET Q
+q BT /F2 7.80 Tf 1.000 1.000 1.000 rg 368.90 744.39 Td (Frete \(USD\)) Tj ET Q
+q BT /F2 7.80 Tf 1.000 1.000 1.000 rg 420.00 744.39 Td (In-land \(USD\)) Tj ET Q
+q BT /F2 7.80 Tf 1.000 1.000 1.000 rg 503.80 744.39 Td (Margem \(USD\)) Tj ET Q
+q 1.000 1.000 1.000 rg 0.820 0.850 0.880 RG 0.35 w 38.00 725.39 519.00 14.50 re B Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 49.95 729.39 Td (1) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 95.30 729.39 Td (714.573) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 158.30 729.39 Td (137.787) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 208.40 729.39 Td (19,28%) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 251.90 729.39 Td (34) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 304.00 729.39 Td (77.932.203) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 372.00 729.39 Td (27.262.624) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 443.30 729.39 Td (135.620) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 511.00 729.39 Td (50.533.960) Tj ET Q
+q 0.950 0.970 0.990 rg 0.820 0.850 0.880 RG 0.35 w 38.00 710.89 519.00 14.50 re B Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 49.95 714.89 Td (2) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 87.10 714.89 Td (1.053.787) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 158.30 714.89 Td (469.259) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 208.40 714.89 Td (44,53%) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 251.90 714.89 Td (26) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 299.90 714.89 Td (264.933.751) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 372.00 714.89 Td (18.108.335) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 443.30 714.89 Td (440.858) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 506.90 714.89 Td (246.384.558) Tj ET Q
+q 1.000 1.000 1.000 rg 0.820 0.850 0.880 RG 0.35 w 38.00 696.39 519.00 14.50 re B Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 49.95 700.39 Td (3) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 95.30 700.39 Td (985.663) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 158.30 700.39 Td (784.151) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 208.40 700.39 Td (79,56%) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 251.90 700.39 Td (21) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 299.90 700.39 Td (432.553.325) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 372.00 700.39 Td (11.602.377) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 443.30 700.39 Td (826.323) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 506.90 700.39 Td (420.124.625) Tj ET Q
+q 0.950 0.970 0.990 rg 0.820 0.850 0.880 RG 0.35 w 38.00 681.89 519.00 14.50 re B Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 49.95 685.89 Td (4) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 95.30 685.89 Td (931.233) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 158.30 685.89 Td (779.928) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 208.40 685.89 Td (83,75%) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 251.90 685.89 Td (39) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 299.90 685.89 Td (431.287.481) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 372.00 685.89 Td (20.224.395) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 443.30 685.89 Td (824.092) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 506.90 685.89 Td (410.238.994) Tj ET Q
+q 1.000 1.000 1.000 rg 0.820 0.850 0.880 RG 0.35 w 38.00 667.39 519.00 14.50 re B Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 49.95 671.39 Td (5) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 95.30 671.39 Td (951.459) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 158.30 671.39 Td (851.051) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 208.40 671.39 Td (89,45%) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 251.90 671.39 Td (28) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 299.90 671.39 Td (467.813.390) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 372.00 671.39 Td (14.541.792) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 443.30 671.39 Td (735.055) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 506.90 671.39 Td (452.536.543) Tj ET Q
+q 0.950 0.970 0.990 rg 0.820 0.850 0.880 RG 0.35 w 38.00 652.89 519.00 14.50 re B Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 49.95 656.89 Td (6) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 87.10 656.89 Td (1.087.750) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 158.30 656.89 Td (891.892) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 208.40 656.89 Td (81,99%) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 251.90 656.89 Td (41) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 299.90 656.89 Td (489.143.255) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 372.00 656.89 Td (22.899.662) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 443.30 656.89 Td (798.437) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 506.90 656.89 Td (465.445.156) Tj ET Q
+q 1.000 1.000 1.000 rg 0.820 0.850 0.880 RG 0.35 w 38.00 638.39 519.00 14.50 re B Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 49.95 642.39 Td (7) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 95.30 642.39 Td (930.906) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 158.30 642.39 Td (826.053) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 208.40 642.39 Td (88,74%) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 251.90 642.39 Td (38) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 299.90 642.39 Td (455.317.675) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 372.00 642.39 Td (21.459.544) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 443.30 642.39 Td (725.188) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 506.90 642.39 Td (433.132.944) Tj ET Q
+q 0.950 0.970 0.990 rg 0.820 0.850 0.880 RG 0.35 w 38.00 623.89 519.00 14.50 re B Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 49.95 627.89 Td (8) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 87.10 627.89 Td (1.079.361) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 158.30 627.89 Td (964.337) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 208.40 627.89 Td (89,34%) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 251.90 627.89 Td (42) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 299.90 627.89 Td (528.441.036) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 372.00 627.89 Td (24.390.011) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 443.30 627.89 Td (821.702) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 506.90 627.89 Td (503.229.323) Tj ET Q
+q 1.000 1.000 1.000 rg 0.820 0.850 0.880 RG 0.35 w 38.00 609.39 519.00 14.50 re B Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 49.95 613.39 Td (9) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 87.10 613.39 Td (1.091.444) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 158.30 613.39 Td (981.721) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 208.40 613.39 Td (89,95%) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 251.90 613.39 Td (33) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 299.90 613.39 Td (540.055.358) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 372.00 613.39 Td (20.114.681) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 443.30 613.39 Td (840.693) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 506.90 613.39 Td (519.099.984) Tj ET Q
+q 0.950 0.970 0.990 rg 0.820 0.850 0.880 RG 0.35 w 38.00 594.89 519.00 14.50 re B Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 47.90 598.89 Td (10) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 87.10 598.89 Td (1.038.656) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 158.30 598.89 Td (956.990) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 208.40 598.89 Td (92,14%) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 251.90 598.89 Td (38) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 299.90 598.89 Td (527.664.119) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 372.00 598.89 Td (24.697.981) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 443.30 598.89 Td (854.777) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 506.90 598.89 Td (502.111.361) Tj ET Q
+q 1.000 1.000 1.000 rg 0.820 0.850 0.880 RG 0.35 w 38.00 580.39 519.00 14.50 re B Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 47.90 584.39 Td (11) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 87.10 584.39 Td (1.156.299) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 158.30 584.39 Td (990.112) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 208.40 584.39 Td (85,63%) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 251.90 584.39 Td (33) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 299.90 584.39 Td (546.675.931) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 372.00 584.39 Td (21.480.661) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 443.30 584.39 Td (870.808) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 506.90 584.39 Td (524.324.462) Tj ET Q
+q 0.950 0.970 0.990 rg 0.820 0.850 0.880 RG 0.35 w 38.00 565.89 519.00 14.50 re B Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 47.90 569.89 Td (12) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 87.10 569.89 Td (1.135.805) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 158.30 569.89 Td (975.719) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 208.40 569.89 Td (85,91%) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 251.90 569.89 Td (21) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 299.90 569.89 Td (530.468.866) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 372.00 569.89 Td (21.140.370) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 443.30 569.89 Td (866.584) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 506.90 569.89 Td (508.461.912) Tj ET Q
+q 0.880 0.940 0.900 rg 0.820 0.850 0.880 RG 0.35 w 38.00 551.39 519.00 14.50 re B Q
+q BT /F2 7.80 Tf 0.100 0.120 0.150 rg 45.85 555.39 Td (TOT) Tj ET Q
+q BT /F2 7.80 Tf 0.100 0.120 0.150 rg 83.00 555.39 Td (12.156.937) Tj ET Q
+q BT /F2 7.80 Tf 0.100 0.120 0.150 rg 150.10 555.39 Td (9.609.001) Tj ET Q
+q BT /F2 7.80 Tf 0.100 0.120 0.150 rg 208.40 555.39 Td (79,04%) Tj ET Q
+q BT /F2 7.80 Tf 0.100 0.120 0.150 rg 249.85 555.39 Td (394) Tj ET Q
+q BT /F2 7.80 Tf 0.100 0.120 0.150 rg 291.70 555.39 Td (5.292.286.391) Tj ET Q
+q BT /F2 7.80 Tf 0.100 0.120 0.150 rg 367.90 555.39 Td (247.922.432) Tj ET Q
+q BT /F2 7.80 Tf 0.100 0.120 0.150 rg 435.10 555.39 Td (8.740.138) Tj ET Q
+q BT /F2 7.80 Tf 0.100 0.120 0.150 rg 498.70 555.39 Td (5.035.623.821) Tj ET Q
+q BT /F2 9.60 Tf 0.070 0.220 0.360 rg 38.00 531.39 Td (Tabela 2 - Produção e Expedição por Fábrica nos 12 Meses \(1_producao_fabricas.csv\)) Tj ET Q
+q 0.120 0.280 0.450 rg 38.00 511.39 519.00 16.00 re f Q
+q BT /F2 7.80 Tf 1.000 1.000 1.000 rg 42.00 515.89 Td (Fábrica) Tj ET Q
+q BT /F2 7.80 Tf 1.000 1.000 1.000 rg 172.95 515.89 Td (POL Destino) Tj ET Q
+q BT /F2 7.80 Tf 1.000 1.000 1.000 rg 232.00 515.89 Td (Linhas Habilitadas) Tj ET Q
+q BT /F2 7.80 Tf 1.000 1.000 1.000 rg 323.20 515.89 Td (Produção Anual \(t\)) Tj ET Q
+q BT /F2 7.80 Tf 1.000 1.000 1.000 rg 411.20 515.89 Td (Enviado ao POL \(t\)) Tj ET Q
+q BT /F2 7.80 Tf 1.000 1.000 1.000 rg 498.40 515.89 Td (% Cap. Usada) Tj ET Q
+q 1.000 1.000 1.000 rg 0.820 0.850 0.880 RG 0.35 w 38.00 496.89 519.00 14.50 re B Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 42.00 500.89 Td (Três Lagoas \(MS\)) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 183.20 500.89 Td (Santos) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 232.00 500.89 Td (V12, V13, V14) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 359.10 500.89 Td (3.082.811) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 447.10 500.89 Td (2.762.655) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 510.70 500.89 Td (100,0%) Tj ET Q
+q 0.950 0.970 0.990 rg 0.820 0.850 0.880 RG 0.35 w 38.00 482.39 519.00 14.50 re B Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 42.00 486.39 Td (Ribas do Rio Pardo \(MS\)) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 183.20 486.39 Td (Santos) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 232.00 486.39 Td (V16) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 359.10 486.39 Td (2.571.139) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 447.10 486.39 Td (2.479.197) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 510.70 486.39 Td (100,0%) Tj ET Q
+q 1.000 1.000 1.000 rg 0.820 0.850 0.880 RG 0.35 w 38.00 467.89 519.00 14.50 re B Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 42.00 471.89 Td (Aracruz \(ES\)) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 179.10 471.89 Td (Portocel) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 232.00 471.89 Td (V1) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 359.10 471.89 Td (1.707.944) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 447.10 471.89 Td (1.649.676) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 510.70 471.89 Td (100,0%) Tj ET Q
+q 0.950 0.970 0.990 rg 0.820 0.850 0.880 RG 0.35 w 38.00 453.39 519.00 14.50 re B Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 42.00 457.39 Td (Imperatriz \(MA\)) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 183.20 457.39 Td (Itaqui) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 232.00 457.39 Td (V2) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 359.10 457.39 Td (1.610.647) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 447.10 457.39 Td (1.406.592) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 510.70 457.39 Td (100,0%) Tj ET Q
+q 1.000 1.000 1.000 rg 0.820 0.850 0.880 RG 0.35 w 38.00 438.89 519.00 14.50 re B Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 42.00 442.89 Td (Mucuri \(BA\)) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 179.10 442.89 Td (Portocel) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 232.00 442.89 Td (V7, V8) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 359.10 442.89 Td (1.483.191) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 447.10 442.89 Td (1.395.292) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 510.70 442.89 Td (100,0%) Tj ET Q
+q 0.950 0.970 0.990 rg 0.820 0.850 0.880 RG 0.35 w 38.00 424.39 519.00 14.50 re B Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 42.00 428.39 Td (Jacareí \(SP\)) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 183.20 428.39 Td (Santos) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 232.00 428.39 Td (V3, V4) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 367.30 428.39 Td (840.559) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 455.30 428.39 Td (804.478) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 510.70 428.39 Td (100,0%) Tj ET Q
+q 1.000 1.000 1.000 rg 0.820 0.850 0.880 RG 0.35 w 38.00 409.89 519.00 14.50 re B Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 42.00 413.89 Td (Veracel \(ES\)) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 179.10 413.89 Td (Portocel) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 232.00 413.89 Td (V15) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 367.30 413.89 Td (550.375) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 455.30 413.89 Td (500.086) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 510.70 413.89 Td (100,0%) Tj ET Q
+q 0.950 0.970 0.990 rg 0.820 0.850 0.880 RG 0.35 w 38.00 395.39 519.00 14.50 re B Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 42.00 399.39 Td (Limeira \(SP\)) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 183.20 399.39 Td (Santos) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 232.00 399.39 Td (V5, V6) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 367.30 399.39 Td (320.162) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 455.30 399.39 Td (323.422) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 510.70 399.39 Td (100,0%) Tj ET Q
+q 1.000 1.000 1.000 rg 0.820 0.850 0.880 RG 0.35 w 38.00 380.89 519.00 14.50 re B Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 42.00 384.89 Td (Suzano \(SP\)) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 183.20 384.89 Td (Santos) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 232.00 384.89 Td (V9, V11) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 371.40 384.89 Td (29.485) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 459.40 384.89 Td (28.640) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 510.70 384.89 Td (100,0%) Tj ET Q
+q 0.880 0.940 0.900 rg 0.820 0.850 0.880 RG 0.35 w 38.00 366.39 519.00 14.50 re B Q
+q BT /F2 7.80 Tf 0.100 0.120 0.150 rg 42.00 370.39 Td (TOTAL ANUAL) Tj ET Q
+q BT /F2 7.80 Tf 0.100 0.120 0.150 rg 193.45 370.39 Td (-) Tj ET Q
+q BT /F2 7.80 Tf 0.100 0.120 0.150 rg 232.00 370.39 Td (Todas \(V1-V16\)) Tj ET Q
+q BT /F2 7.80 Tf 0.100 0.120 0.150 rg 355.00 370.39 Td (12.196.312) Tj ET Q
+q BT /F2 7.80 Tf 0.100 0.120 0.150 rg 443.00 370.39 Td (11.349.937) Tj ET Q
+q BT /F2 7.80 Tf 0.100 0.120 0.150 rg 510.70 370.39 Td (100,0%) Tj ET Q
+q BT /F2 9.60 Tf 0.070 0.220 0.360 rg 38.00 346.39 Td (Tabela 3 - Embarques e Custos de Frete por Armador \(2_embarques_rotas.csv\)) Tj ET Q
+q 0.120 0.280 0.450 rg 38.00 326.39 519.00 16.00 re f Q
+q BT /F2 7.80 Tf 1.000 1.000 1.000 rg 42.00 330.89 Td (Armador) Tj ET Q
+q BT /F2 7.80 Tf 1.000 1.000 1.000 rg 127.10 330.89 Td (Navios Despachados) Tj ET Q
+q BT /F2 7.80 Tf 1.000 1.000 1.000 rg 219.00 330.89 Td (Volume Embarcado \(t\)) Tj ET Q
+q BT /F2 7.80 Tf 1.000 1.000 1.000 rg 314.00 330.89 Td (Custo de Frete \(USD\)) Tj ET Q
+q BT /F2 7.80 Tf 1.000 1.000 1.000 rg 405.10 330.89 Td (Frete Médio \(USD/t\)) Tj ET Q
+q BT /F2 7.80 Tf 1.000 1.000 1.000 rg 507.90 330.89 Td (% do Volume) Tj ET Q
+q 1.000 1.000 1.000 rg 0.820 0.850 0.880 RG 0.35 w 38.00 311.89 519.00 14.50 re B Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 42.00 315.89 Td (ULISSES) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 157.85 315.89 Td (218) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 263.10 315.89 Td (4.603.113) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 354.00 315.89 Td (94.631.511) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 461.50 315.89 Td (20,56) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 527.40 315.89 Td (43,62%) Tj ET Q
+q 0.950 0.970 0.990 rg 0.820 0.850 0.880 RG 0.35 w 38.00 297.39 519.00 14.50 re B Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 42.00 301.39 Td (COLOMBO) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 157.85 301.39 Td (132) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 263.10 301.39 Td (3.570.942) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 354.00 301.39 Td (94.182.408) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 461.50 301.39 Td (26,37) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 527.40 301.39 Td (33,84%) Tj ET Q
+q 1.000 1.000 1.000 rg 0.820 0.850 0.880 RG 0.35 w 38.00 282.89 519.00 14.50 re B Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 42.00 286.89 Td (SINBAD) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 159.90 286.89 Td (39) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 263.10 286.89 Td (2.130.000) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 354.00 286.89 Td (53.483.861) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 461.50 286.89 Td (25,11) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 527.40 286.89 Td (20,19%) Tj ET Q
+q 0.950 0.970 0.990 rg 0.820 0.850 0.880 RG 0.35 w 38.00 268.39 519.00 14.50 re B Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 42.00 272.39 Td (AMERICO) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 161.95 272.39 Td (4) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 271.30 272.39 Td (190.004) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 358.10 272.39 Td (4.414.505) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 461.50 272.39 Td (23,23) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 531.50 272.39 Td (1,80%) Tj ET Q
+q 1.000 1.000 1.000 rg 0.820 0.850 0.880 RG 0.35 w 38.00 253.89 519.00 14.50 re B Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 42.00 257.89 Td (CASPIAN) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 161.95 257.89 Td (1) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 275.40 257.89 Td (58.000) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 358.10 257.89 Td (1.210.147) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 461.50 257.89 Td (20,86) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 531.50 257.89 Td (0,55%) Tj ET Q
+q 0.880 0.940 0.900 rg 0.820 0.850 0.880 RG 0.35 w 38.00 239.39 519.00 14.50 re B Q
+q BT /F2 7.80 Tf 0.100 0.120 0.150 rg 42.00 243.39 Td (TOTAL) Tj ET Q
+q BT /F2 7.80 Tf 0.100 0.120 0.150 rg 157.85 243.39 Td (394) Tj ET Q
+q BT /F2 7.80 Tf 0.100 0.120 0.150 rg 259.00 243.39 Td (10.552.060) Tj ET Q
+q BT /F2 7.80 Tf 0.100 0.120 0.150 rg 349.90 243.39 Td (247.922.432) Tj ET Q
+q BT /F2 7.80 Tf 0.100 0.120 0.150 rg 461.50 243.39 Td (23,50) Tj ET Q
+q BT /F2 7.80 Tf 0.100 0.120 0.150 rg 523.30 243.39 Td (100,00%) Tj ET Q
+q BT /F2 9.60 Tf 0.070 0.220 0.360 rg 38.00 219.39 Td (Tabela 4 - Expedição Marítima e Estoques por POL \(2_embarques_rotas.csv / 3_estoques_pol.csv\)) Tj ET Q
+q 0.120 0.280 0.450 rg 38.00 199.39 519.00 16.00 re f Q
+q BT /F2 7.80 Tf 1.000 1.000 1.000 rg 42.00 203.89 Td (POL de Origem) Tj ET Q
+q BT /F2 7.80 Tf 1.000 1.000 1.000 rg 152.00 203.89 Td (Volume Embarcado \(t\)) Tj ET Q
+q BT /F2 7.80 Tf 1.000 1.000 1.000 rg 257.00 203.89 Td (Custo de Frete \(USD\)) Tj ET Q
+q BT /F2 7.80 Tf 1.000 1.000 1.000 rg 360.10 203.89 Td (Frete Médio \(USD/t\)) Tj ET Q
+q BT /F2 7.80 Tf 1.000 1.000 1.000 rg 454.60 203.89 Td (Estoque Médio Mensal \(t\)) Tj ET Q
+q 1.000 1.000 1.000 rg 0.820 0.850 0.880 RG 0.35 w 38.00 184.89 519.00 14.50 re B Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 42.00 188.89 Td (Santos \(SP\)) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 196.10 188.89 Td (6.018.014) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 292.90 188.89 Td (143.005.780) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 416.50 188.89 Td (23,76) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 527.40 188.89 Td (20.935) Tj ET Q
+q 0.950 0.970 0.990 rg 0.820 0.850 0.880 RG 0.35 w 38.00 170.39 519.00 14.50 re B Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 42.00 174.39 Td (Portocel \(ES\)) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 196.10 174.39 Td (3.364.540) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 297.00 174.39 Td (79.156.221) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 416.50 174.39 Td (23,53) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 527.40 174.39 Td (16.262) Tj ET Q
+q 1.000 1.000 1.000 rg 0.820 0.850 0.880 RG 0.35 w 38.00 155.89 519.00 14.50 re B Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 42.00 159.89 Td (Itaqui \(MA\)) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 196.10 159.89 Td (1.169.506) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 297.00 159.89 Td (25.760.431) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 416.50 159.89 Td (22,03) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 527.40 159.89 Td (42.253) Tj ET Q
+q 0.880 0.940 0.900 rg 0.820 0.850 0.880 RG 0.35 w 38.00 141.39 519.00 14.50 re B Q
+q BT /F2 7.80 Tf 0.100 0.120 0.150 rg 42.00 145.39 Td (TOTAL POLs) Tj ET Q
+q BT /F2 7.80 Tf 0.100 0.120 0.150 rg 192.00 145.39 Td (10.552.060) Tj ET Q
+q BT /F2 7.80 Tf 0.100 0.120 0.150 rg 292.90 145.39 Td (247.922.432) Tj ET Q
+q BT /F2 7.80 Tf 0.100 0.120 0.150 rg 416.50 145.39 Td (23,50) Tj ET Q
+q BT /F2 7.80 Tf 0.100 0.120 0.150 rg 527.40 145.39 Td (79.450) Tj ET Q
+endstream
+endobj
+12 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 11 0 R >>
+endobj
+13 0 obj
+<< /Length 10900 >>
+stream
+q 0.050 0.350 0.220 rg 0.00 813.89 595.28 28.00 re f Q
+q BT /F2 9.50 Tf 1.000 1.000 1.000 rg 38.00 823.89 Td (UNIFESP - RPVMM | Caso Suzano S&OP Logístico \(Modelo Rolling Horizon em Julia\)) Tj ET Q
+q 0.750 0.780 0.820 RG 0.60 w 38.00 30.00 m 557.28 30.00 l S Q
+q BT /F1 8.00 Tf 0.400 0.400 0.400 rg 38.00 18.00 Td (Guia de Apresentação, Resumo do Código e Tabelas de Resultados) Tj ET Q
+q BT /F1 8.00 Tf 0.400 0.400 0.400 rg 512.28 18.00 Td (Página 5) Tj ET Q
+q BT /F2 9.60 Tf 0.070 0.220 0.360 rg 38.00 786.89 Td (Tabela 5 - Top 10 Portos de Descarga \(PODs\) em Volume de Atendimento \(5_atendimento_clientes.csv\)) Tj ET Q
+q 0.120 0.280 0.450 rg 38.00 766.89 519.00 16.00 re f Q
+q BT /F2 7.80 Tf 1.000 1.000 1.000 rg 46.15 771.39 Td (Ranking) Tj ET Q
+q BT /F2 7.80 Tf 1.000 1.000 1.000 rg 87.00 771.39 Td (POD \(Porto de Descarga\)) Tj ET Q
+q BT /F2 7.80 Tf 1.000 1.000 1.000 rg 206.10 771.39 Td (Volume Entregue \(t\)) Tj ET Q
+q BT /F2 7.80 Tf 1.000 1.000 1.000 rg 307.00 771.39 Td (Receita Gerada \(USD\)) Tj ET Q
+q BT /F2 7.80 Tf 1.000 1.000 1.000 rg 405.10 771.39 Td (Custo In-land \(USD\)) Tj ET Q
+q BT /F2 7.80 Tf 1.000 1.000 1.000 rg 512.00 771.39 Td (% do Total) Tj ET Q
+q 1.000 1.000 1.000 rg 0.820 0.850 0.880 RG 0.35 w 38.00 752.39 519.00 14.50 re B Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 56.40 756.39 Td (1º) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 87.00 756.39 Td (Alabasta) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 254.30 756.39 Td (887.325) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 342.90 756.39 Td (486.032.300) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 453.30 756.39 Td (840.833) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 531.50 756.39 Td (9,23%) Tj ET Q
+q 0.950 0.970 0.990 rg 0.820 0.850 0.880 RG 0.35 w 38.00 737.89 519.00 14.50 re B Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 56.40 741.89 Td (2º) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 87.00 741.89 Td (Besaid) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 254.30 741.89 Td (865.976) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 342.90 741.89 Td (480.782.700) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 453.30 741.89 Td (720.814) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 531.50 741.89 Td (9,01%) Tj ET Q
+q 1.000 1.000 1.000 rg 0.820 0.850 0.880 RG 0.35 w 38.00 723.39 519.00 14.50 re B Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 56.40 727.39 Td (3º) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 87.00 727.39 Td (Deeptrench) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 254.30 727.39 Td (864.662) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 342.90 727.39 Td (468.802.000) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 453.30 727.39 Td (717.290) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 531.50 727.39 Td (9,00%) Tj ET Q
+q 0.950 0.970 0.990 rg 0.820 0.850 0.880 RG 0.35 w 38.00 708.89 519.00 14.50 re B Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 56.40 712.89 Td (4º) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 87.00 712.89 Td (Azkaban) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 254.30 712.89 Td (651.816) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 342.90 712.89 Td (357.857.500) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 453.30 712.89 Td (608.227) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 531.50 712.89 Td (6,78%) Tj ET Q
+q 1.000 1.000 1.000 rg 0.820 0.850 0.880 RG 0.35 w 38.00 694.39 519.00 14.50 re B Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 56.40 698.39 Td (5º) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 87.00 698.39 Td (Johto) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 254.30 698.39 Td (599.096) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 342.90 698.39 Td (321.382.100) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 453.30 698.39 Td (530.423) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 531.50 698.39 Td (6,23%) Tj ET Q
+q 0.950 0.970 0.990 rg 0.820 0.850 0.880 RG 0.35 w 38.00 679.89 519.00 14.50 re B Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 56.40 683.89 Td (6º) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 87.00 683.89 Td (Philgaia) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 254.30 683.89 Td (535.097) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 342.90 683.89 Td (288.696.900) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 453.30 683.89 Td (434.761) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 531.50 683.89 Td (5,57%) Tj ET Q
+q 1.000 1.000 1.000 rg 0.820 0.850 0.880 RG 0.35 w 38.00 665.39 519.00 14.50 re B Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 56.40 669.39 Td (7º) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 87.00 669.39 Td (Liones) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 254.30 669.39 Td (351.809) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 342.90 669.39 Td (192.917.700) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 453.30 669.39 Td (274.378) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 531.50 669.39 Td (3,66%) Tj ET Q
+q 0.950 0.970 0.990 rg 0.820 0.850 0.880 RG 0.35 w 38.00 650.89 519.00 14.50 re B Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 56.40 654.89 Td (8º) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 87.00 654.89 Td (Paldea) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 254.30 654.89 Td (313.943) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 342.90 654.89 Td (177.873.200) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 453.30 654.89 Td (252.919) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 531.50 654.89 Td (3,27%) Tj ET Q
+q 1.000 1.000 1.000 rg 0.820 0.850 0.880 RG 0.35 w 38.00 636.39 519.00 14.50 re B Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 56.40 640.39 Td (9º) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 87.00 640.39 Td (Walden) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 254.30 640.39 Td (309.210) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 342.90 640.39 Td (174.186.600) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 453.30 640.39 Td (328.335) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 531.50 640.39 Td (3,22%) Tj ET Q
+q 0.950 0.970 0.990 rg 0.820 0.850 0.880 RG 0.35 w 38.00 621.89 519.00 14.50 re B Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 54.35 625.89 Td (10º) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 87.00 625.89 Td (Tartarus) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 254.30 625.89 Td (297.079) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 342.90 625.89 Td (165.294.000) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 453.30 625.89 Td (260.852) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 531.50 625.89 Td (3,09%) Tj ET Q
+q 0.880 0.940 0.900 rg 0.820 0.850 0.880 RG 0.35 w 38.00 607.39 519.00 14.50 re B Q
+q BT /F2 7.80 Tf 0.100 0.120 0.150 rg 58.45 611.39 Td (-) Tj ET Q
+q BT /F2 7.80 Tf 0.100 0.120 0.150 rg 87.00 611.39 Td (Top 10 PODs) Tj ET Q
+q BT /F2 7.80 Tf 0.100 0.120 0.150 rg 246.10 611.39 Td (5.676.012) Tj ET Q
+q BT /F2 7.80 Tf 0.100 0.120 0.150 rg 334.70 611.39 Td (3.113.825.000) Tj ET Q
+q BT /F2 7.80 Tf 0.100 0.120 0.150 rg 445.10 611.39 Td (4.968.831) Tj ET Q
+q BT /F2 7.80 Tf 0.100 0.120 0.150 rg 527.40 611.39 Td (59,07%) Tj ET Q
+q BT /F2 9.60 Tf 0.070 0.220 0.360 rg 38.00 587.39 Td (Tabela 6 - Rentabilidade de Clientes: Top 5 Mais Rentáveis e Total \(7_rentabilidade_clientes.csv - 0 Deficitários\)) Tj ET Q
+q 0.120 0.280 0.450 rg 38.00 567.39 519.00 16.00 re f Q
+q BT /F2 7.80 Tf 1.000 1.000 1.000 rg 42.00 571.89 Td (Cliente) Tj ET Q
+q BT /F2 7.80 Tf 1.000 1.000 1.000 rg 139.10 571.89 Td (Volume Atendido \(t\)) Tj ET Q
+q BT /F2 7.80 Tf 1.000 1.000 1.000 rg 227.10 571.89 Td (Receita Total \(USD\)) Tj ET Q
+q BT /F2 7.80 Tf 1.000 1.000 1.000 rg 311.00 571.89 Td (Custo In-land \(USD\)) Tj ET Q
+q BT /F2 7.80 Tf 1.000 1.000 1.000 rg 393.00 571.89 Td (Frete Rateado \(USD\)) Tj ET Q
+q BT /F2 7.80 Tf 1.000 1.000 1.000 rg 475.00 571.89 Td (Margem Líquida \(USD\)) Tj ET Q
+q 1.000 1.000 1.000 rg 0.820 0.850 0.880 RG 0.35 w 38.00 552.89 519.00 14.50 re B Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 42.00 556.89 Td (CLIENTE418 \(Top 1\)) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 187.30 556.89 Td (603.996) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 258.90 556.89 Td (317.801.958) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 357.30 556.89 Td (614.212) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 427.00 556.89 Td (15.772.521) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 506.90 556.89 Td (301.415.225) Tj ET Q
+q 0.950 0.970 0.990 rg 0.820 0.850 0.880 RG 0.35 w 38.00 538.39 519.00 14.50 re B Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 42.00 542.39 Td (CLIENTE38 \(Top 2\)) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 187.30 542.39 Td (325.936) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 258.90 542.39 Td (171.097.145) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 357.30 542.39 Td (328.911) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 431.10 542.39 Td (8.511.559) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 506.90 542.39 Td (162.256.675) Tj ET Q
+q 1.000 1.000 1.000 rg 0.820 0.850 0.880 RG 0.35 w 38.00 523.89 519.00 14.50 re B Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 42.00 527.89 Td (CLIENTE66 \(Top 3\)) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 187.30 527.89 Td (234.000) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 258.90 527.89 Td (130.692.110) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 357.30 527.89 Td (243.512) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 431.10 527.89 Td (6.110.676) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 506.90 527.89 Td (124.337.922) Tj ET Q
+q 0.950 0.970 0.990 rg 0.820 0.850 0.880 RG 0.35 w 38.00 509.39 519.00 14.50 re B Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 42.00 513.39 Td (CLIENTE44 \(Top 4\)) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 187.30 513.39 Td (220.734) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 258.90 513.39 Td (116.103.542) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 357.30 513.39 Td (217.105) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 431.10 513.39 Td (5.764.085) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 506.90 513.39 Td (110.122.352) Tj ET Q
+q 1.000 1.000 1.000 rg 0.820 0.850 0.880 RG 0.35 w 38.00 494.89 519.00 14.50 re B Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 42.00 498.89 Td (CLIENTE232 \(Top 5\)) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 187.30 498.89 Td (211.430) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 258.90 498.89 Td (111.318.920) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 357.30 498.89 Td (213.688) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 431.10 498.89 Td (5.521.190) Tj ET Q
+q BT /F1 7.80 Tf 0.100 0.120 0.150 rg 506.90 498.89 Td (105.584.042) Tj ET Q
+q 0.880 0.940 0.900 rg 0.820 0.850 0.880 RG 0.35 w 38.00 480.39 519.00 14.50 re B Q
+q BT /F2 7.80 Tf 0.100 0.120 0.150 rg 42.00 484.39 Td (TOTAL \(417 Clientes\)) Tj ET Q
+q BT /F2 7.80 Tf 0.100 0.120 0.150 rg 179.10 484.39 Td (9.609.001) Tj ET Q
+q BT /F2 7.80 Tf 0.100 0.120 0.150 rg 250.70 484.39 Td (5.292.286.391) Tj ET Q
+q BT /F2 7.80 Tf 0.100 0.120 0.150 rg 349.10 484.39 Td (8.740.138) Tj ET Q
+q BT /F2 7.80 Tf 0.100 0.120 0.150 rg 422.90 484.39 Td (247.922.432) Tj ET Q
+q BT /F2 7.80 Tf 0.100 0.120 0.150 rg 498.70 484.39 Td (5.035.623.821) Tj ET Q
+endstream
+endobj
+14 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 13 0 R >>
+endobj
+xref
+0 15
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000142 00000 n 
+0000000239 00000 n 
+0000000341 00000 n 
+0000007436 00000 n 
+0000007578 00000 n 
+0000015523 00000 n 
+0000015665 00000 n 
+0000017995 00000 n 
+0000018138 00000 n 
+0000041618 00000 n 
+0000041762 00000 n 
+0000052716 00000 n 
+trailer
+<< /Size 15 /Root 1 0 R >>
+startxref
+52860
+%%EOF
